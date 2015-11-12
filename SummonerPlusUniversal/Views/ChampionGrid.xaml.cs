@@ -52,6 +52,7 @@ namespace SummonerPlusUniversal.Views
         private void Champion_Click(object sender, ItemClickEventArgs e)
         {
             ChampionViewModel champion = (ChampionViewModel)e.ClickedItem;
+            //if()
             //get champion information, make new view that contains champion info, initialize the component here.
 
 
