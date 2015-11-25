@@ -1,0 +1,34 @@
+﻿<Page Width="Auto" Height="Auto" Padding="0"
+    x:Class="SummonerPlusUniversal.Views.ChampionGrid"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SummonerPlusUniversal.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:champ="using:SummonerPlusUniversal.ViewModels"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <DataTemplate x:Key="ChampionItemTemplate" x:DataType="champ:ChampionViewModel">
+            <StackPanel Orientation="Vertical" Padding="10" Width="100">
+                <Ellipse Grid.Row="1" Width="64" Height="64" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Ellipse.Fill>
+                        <ImageBrush>
+                            <ImageBrush.ImageSource>
+                                <BitmapImage UriSource="{Binding ImageUrl}"/>
+                            </ImageBrush.ImageSource>
+                        </ImageBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <TextBlock Text="{Binding ChampionName}" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <GridView ItemClick="Champion_Click" ItemsSource="{Binding Champions}" ItemTemplate="{StaticResource ChampionItemTemplate}" IsItemClickEnabled="True">
+        </GridView>
+    </Grid>
+</Page>
