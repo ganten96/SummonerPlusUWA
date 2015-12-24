@@ -96,6 +96,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Champion.cs" />
+    <Compile Include="Classes\ChampionStats.cs" />
+    <Compile Include="ViewModels\ChampionInformationViewModel.cs" />
+    <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\ChampionInformation.xaml.cs">
       <DependentUpon>ChampionInformation.xaml</DependentUpon>
     </Compile>
@@ -103,7 +108,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\ChampionViewModel.cs" />
+    <Compile Include="ViewModels\ChampionGridViewModel.cs" />
     <Compile Include="Views\ChampionGrid.xaml.cs">
       <DependentUpon>ChampionGrid.xaml</DependentUpon>
     </Compile>

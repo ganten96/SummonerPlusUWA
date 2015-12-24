@@ -27,7 +27,7 @@ namespace SummonerPlusUniversal
         public MainPage()
         {
             this.InitializeComponent();
-            this.MainContent.Content = new ChampionGrid();
+            this.DataContext = new MainPageViewModel();
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)

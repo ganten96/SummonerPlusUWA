@@ -1,8 +1,11 @@
-﻿using SummonerPlusUniversal.ViewModels;
+﻿using Newtonsoft.Json;
+using SummonerPlusUniversal.Classes;
+using SummonerPlusUniversal.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -23,20 +26,15 @@ namespace SummonerPlusUniversal.Views
     /// </summary>
     public sealed partial class ChampionInformation : Page
     {
-        private ChampionViewModel champion;
         public ChampionInformation()
         {
             this.InitializeComponent();
         }
 
-        public ChampionInformation(ChampionViewModel c)
+        public ChampionInformation(long championID)
         {
-            champion = c;
-        }
-
-        private ChampionViewModel getChampionInfo(int championID)
-        {
-            return null;
+            this.InitializeComponent();
+            this.DataContext = new ChampionInformationViewModel(championID);
         }
     }
 }

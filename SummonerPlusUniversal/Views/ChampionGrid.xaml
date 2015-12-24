@@ -5,10 +5,10 @@
     xmlns:local="using:SummonerPlusUniversal.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:champ="using:SummonerPlusUniversal.ViewModels"
+    xmlns:champ="using:SummonerPlusUniversal.Classes"
     mc:Ignorable="d">
     <Page.Resources>
-        <DataTemplate x:Key="ChampionItemTemplate" x:DataType="champ:ChampionViewModel">
+        <DataTemplate x:Key="ChampionItemTemplate" x:DataType="champ:Champion">
             <StackPanel Orientation="Vertical" Padding="10" Width="100">
                 <Ellipse Grid.Row="1" Width="64" Height="64" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Ellipse.Fill>
@@ -25,10 +25,9 @@
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition/>
+            <RowDefinition Height="0"/>
         </Grid.RowDefinitions>
-        <GridView ItemClick="Champion_Click" ItemsSource="{Binding Champions}" ItemTemplate="{StaticResource ChampionItemTemplate}" IsItemClickEnabled="True">
-        </GridView>
+        <GridView ItemClick="Champion_Click" ItemsSource="{Binding Champions}" ItemTemplate="{StaticResource ChampionItemTemplate}" IsItemClickEnabled="True"/>
     </Grid>
 </Page>

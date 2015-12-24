@@ -1,13 +1,14 @@
 ﻿using Newtonsoft.Json;
+using SummonerPlusUniversal.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SummonerPlusUniversal.ViewModels
+namespace SummonerPlusUniversal.Classes
 {
-    public class ChampionViewModel
+    public class Champion
     {
         [JsonProperty(PropertyName = "id")]
         public long ChampionID { get; set; }
@@ -36,13 +37,13 @@ namespace SummonerPlusUniversal.ViewModels
         [JsonProperty(PropertyName = "title")]
         public string Title { get; set; }
 
+        public string NameAndTitle { get { return ChampionName + ", " + Title; } }
+
+        public string SplashImageUrl { get { return @"http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + ChampionName + "_0.jpg"; } }
+
         public string ImageUrl { get { return @"http://ddragon.leagueoflegends.com/cdn/5.20.1/img/champion/" + Key + ".png"; } }
 
-        public List<ChampionViewModel> Champions { get; set; }
-        //[JsonProperty(PropertyName = "info")]
-        //public ChampionInfo Info { get; set; }
+        [JsonProperty(PropertyName = "stats")]
+        public ChampionStats ChampionStats { get; set; }
     }
 }
-/*
-
-*/
