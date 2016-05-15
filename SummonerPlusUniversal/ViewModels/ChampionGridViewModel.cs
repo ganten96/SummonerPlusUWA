@@ -5,17 +5,16 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Net.Http;
-using System.Text;
+using Windows.Web.Http;
 using System.Threading.Tasks;
 
 namespace SummonerPlusUniversal.ViewModels
 {
-    public class ChampionGridViewModel : ViewModelBase
+    public class ChampionGridViewModel : ViewModelBase<ObservableCollection<Champion>>
     {
         public ChampionGridViewModel()
         {
-            champions = GetChampionsAsync();
+            champions = GetChampionsAsync().GetAwaiter().GetResult();
         }
 
         private ObservableCollection<Champion> champions;
@@ -28,20 +27,20 @@ namespace SummonerPlusUniversal.ViewModels
             }
             set
             {
-                champions = this.GetChampionsAsync();
+                champions = this.GetChampionsAsync().GetAwaiter().GetResult();
                 this.OnPropertyChanged("Champions");
             }
         }
 
-        public ObservableCollection<Champion> GetChampionsAsync()
+        public async Task<ObservableCollection<Champion>> GetChampionsAsync()
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("http://summonerapi.azurewebsites.net");
-                HttpResponseMessage response =  client.GetAsync("/api/Champion/").Result;
+                Uri uri = new Uri("https://summonerapi.azurewebsites.net");
+                HttpResponseMessage response = await client.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
                 {
-                    string json = response.Content.ReadAsStringAsync().Result;
+                    string json = await response.Content.ReadAsStringAsync();
 
                     Dictionary<string, Champion> champDict = JsonConvert.DeserializeObject<Dictionary<string, Champion>>(json);
 
